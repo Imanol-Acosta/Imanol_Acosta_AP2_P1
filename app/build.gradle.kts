@@ -1,6 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinx.serialization)
+
+    id("com.google.dagger.hilt.android") version "2.59"
 }
 
 android {
