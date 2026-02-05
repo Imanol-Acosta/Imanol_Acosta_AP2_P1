@@ -1,4 +1,9 @@
 package ucne.edu.imanol_acosta_ap2_p1.data.local.entity
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-class BorrameEntity {
-}
+@Entity(tableName = "Borrame")
+data class BorrameEntity(
+    @PrimaryKey(autoGenerate = true)
+    val BorrameId: Int = 0
+    )
