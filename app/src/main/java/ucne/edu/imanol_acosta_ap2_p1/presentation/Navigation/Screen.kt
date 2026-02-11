@@ -7,5 +7,5 @@ sealed class Screen {
     data object BorrameList : Screen()
 
     @Serializable
-    data class Borrame(val borrameId: Int) : Screen()
+    data class Borrame(val cervezaId: Int) : Screen()
 }
