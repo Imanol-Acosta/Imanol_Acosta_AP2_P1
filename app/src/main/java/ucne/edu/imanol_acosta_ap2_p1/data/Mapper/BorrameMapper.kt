@@ -5,16 +5,15 @@ import ucne.edu.imanol_acosta_ap2_p1.data.local.entity.BorrameEntity
 
 fun BorrameEntity.toDomain(): Borrame =
     Borrame(
-        borrameId = borrameId,
+        cervezaId = cervezaId,
         nombre = nombre,
-        descripcion = descripcion,
-        valor = valor
+        puntuacion = puntuacion,
     )
 
 fun Borrame.toEntity(): BorrameEntity =
     BorrameEntity(
-        borrameId = borrameId,
+        cervezaId = cervezaId,
         nombre = nombre,
-        descripcion = descripcion,
-        valor = valor
+        puntuacion = puntuacion,
+
     )
