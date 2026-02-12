@@ -8,6 +8,7 @@ fun BorrameEntity.toDomain(): Borrame =
         cervezaId = cervezaId,
         nombre = nombre,
         puntuacion = puntuacion,
+        marca = marca,
     )
 
 fun Borrame.toEntity(): BorrameEntity =
@@ -15,5 +16,6 @@ fun Borrame.toEntity(): BorrameEntity =
         cervezaId = cervezaId,
         nombre = nombre,
         puntuacion = puntuacion,
+        marca = marca,
 
     )
