@@ -1,11 +1,11 @@
-package ucne.edu.imanol_acosta_ap2_p1.presentation.Navigation
+package ucne.edu.imanol_acosta_ap2_p1.presentation.navigation
 
 import kotlinx.serialization.Serializable
 
 sealed class Screen {
     @Serializable
-    data object BorrameList : Screen()
+    data object CervezaList : Screen()
 
     @Serializable
-    data class Borrame(val cervezaId: Int) : Screen()
+    data class Cerveza(val cervezaId: Int) : Screen()
 }
