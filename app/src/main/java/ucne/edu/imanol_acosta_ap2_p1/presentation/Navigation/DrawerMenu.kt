@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import ucne.edu.imanol_acosta_ap2_p1.presentation.navigation.Screen
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -30,7 +31,7 @@ fun DrawerMenu(
     navHostController: NavHostController,
     content: @Composable () -> Unit
 ) {
-    val selectedItem = remember { mutableStateOf("Borrame") }
+    val selectedItem = remember { mutableStateOf("Cerveza") }
     val scope = rememberCoroutineScope()
 
     fun handleItemClick(destination: Any, item: String) {
@@ -63,12 +64,13 @@ fun DrawerMenu(
                 LazyColumn {
                     item {
                         DrawerItem(
-                            title = "Borrame",
+                            title = "Cervezas",
                             icon = Icons.Filled.List,
-                            isSelected = selectedItem.value == "Borrame"
-                        ) {
-                            handleItemClick(Screen.BorrameList, "Borrame")
-                        }
+                            isSelected = selectedItem.value == "Cerveza" || selectedItem.value == "Cervezas",
+                            navigateTo = {
+                                handleItemClick(Screen.CervezaList, "Cerveza")
+                            }
+                        )
                     }
                 }
             }
