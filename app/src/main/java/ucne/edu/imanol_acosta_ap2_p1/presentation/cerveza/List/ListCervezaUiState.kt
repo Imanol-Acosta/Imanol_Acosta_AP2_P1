@@ -7,5 +7,7 @@ data class ListCervezaUiState(
     val cervezas: List<Cerveza> = emptyList(),
     val message: String? = null,
     val navigateToCreate: Boolean = false,
-    val navigateToEditId: Int? = null
+    val navigateToEditId: Int? = null,
+    val totalCervezas: Int = 0,
+    val promedioPuntuacion: Double = 0.0
 )

@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ucne.edu.imanol_acosta_ap2_p1.domain.Model.Cerveza
@@ -81,34 +82,58 @@ private fun ListCervezaBody(
             }
         }
     ) { padding ->
-        Box(
+        Column(
             modifier = Modifier
                 .padding(padding)
                 .fillMaxSize()
         ) {
-            if (state.isLoading) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }
-            if (state.cervezas.isEmpty() && !state.isLoading) {
-                 Text(
-                    text = "No hay cervezas agregadas",
-                    modifier = Modifier.align(Alignment.Center),
-                    style = MaterialTheme.typography.bodyLarge
-                )
-            } else {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp)
-                ) {
-                    items(state.cervezas) { cerveza ->
-                        CervezaCard(
-                            cerveza = cerveza,
-                            onClick = { onEvent(ListCervezaUiEvent.Edit(cerveza.idCerveza)) },
-                            onDelete = { onEvent(ListCervezaUiEvent.Delete(cerveza.idCerveza)) }
-                        )
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+                if (state.isLoading) {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
+                if (state.cervezas.isEmpty() && !state.isLoading) {
+                     Text(
+                        text = "No hay cervezas agregadas",
+                        modifier = Modifier.align(Alignment.Center),
+                        style = MaterialTheme.typography.bodyLarge
+                    )
+                } else {
+                    LazyColumn(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(horizontal = 16.dp)
+                    ) {
+                        items(state.cervezas) { cerveza ->
+                            CervezaCard(
+                                cerveza = cerveza,
+                                onClick = { onEvent(ListCervezaUiEvent.Edit(cerveza.idCerveza)) },
+                                onDelete = { onEvent(ListCervezaUiEvent.Delete(cerveza.idCerveza)) }
+                            )
+                        }
                     }
                 }
+            }
+
+            HorizontalDivider()
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                Text(
+                    text = "Total de Cervezas: ${state.totalCervezas}",
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Bold
+                )
+                Text(
+                    text = "Promedio de Puntuación: ${String.format("%.2f", state.promedioPuntuacion)}",
+                    style = MaterialTheme.typography.bodyLarge,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }

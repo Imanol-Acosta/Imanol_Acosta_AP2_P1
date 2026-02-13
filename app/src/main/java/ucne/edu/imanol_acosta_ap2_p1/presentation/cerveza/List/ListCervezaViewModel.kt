@@ -45,6 +45,8 @@ class ListCervezaViewModel @Inject constructor(
                     it.copy(
                         isLoading = false,
                         cervezas = cervezas,
+                        totalCervezas = cervezas.size,
+                        promedioPuntuacion = if (cervezas.isNotEmpty()) cervezas.map { it.puntuacion }.average() else 0.0,
                         message = null
                     )
                 }
