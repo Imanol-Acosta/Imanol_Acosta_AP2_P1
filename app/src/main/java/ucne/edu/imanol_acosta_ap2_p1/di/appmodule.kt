@@ -7,35 +7,36 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import ucne.edu.imanol_acosta_ap2_p1.data.Repository.BorrameRepositoryImpl
-import ucne.edu.imanol_acosta_ap2_p1.data.local.dao.BorrameDao
-import ucne.edu.imanol_acosta_ap2_p1.domain.Repository.BorrameRepository
-import ucne.edu.imanol_acosta_ap2_p1.data.database.BorrameDatabase
+import ucne.edu.imanol_acosta_ap2_p1.data.local.dao.CervezaDao
+import ucne.edu.imanol_acosta_ap2_p1.data.database.CervezaDb
+import ucne.edu.imanol_acosta_ap2_p1.data.Repository.CervezaRepositoryImpl
+import ucne.edu.imanol_acosta_ap2_p1.domain.Repository.CervezaRepository
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 object AppModule {
+
     @Provides
     @Singleton
-    fun provideBorrameDB(@ApplicationContext appContext: Context): BorrameDatabase {
+    fun provideCervezaDb(@ApplicationContext context: Context): CervezaDb {
         return Room.databaseBuilder(
-            appContext,
-            BorrameDatabase::class.java,
-            "BorrameDB"
+            context,
+            CervezaDb::class.java,
+            "CervezaDb"
         ).fallbackToDestructiveMigration()
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideBorrameDao(db: BorrameDatabase): BorrameDao {
-        return db.borrameDao()
+    fun provideCervezaDao(cervezaDb: CervezaDb): CervezaDao {
+        return cervezaDb.cervezaDao()
     }
 
     @Provides
     @Singleton
-    fun provideBorrameRepository(impl: BorrameRepositoryImpl): BorrameRepository {
-        return impl
+    fun provideCervezaRepository(cervezaRepositoryImpl: CervezaRepositoryImpl): CervezaRepository {
+        return cervezaRepositoryImpl
     }
 }
